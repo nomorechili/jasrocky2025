@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>You're Invited — Wedding Celebration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#FAF9F7;
+      --champagne:#EFE7DC;
+      --sage:#8EA98F;
+      --dusty-blue:#6F89A6;
+      --charcoal:#2F2F2F;
+      --ink:#1F1F1F;
+      --ring: 0 0 0 3px rgba(111,137,166,.25);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--ivory);color:var(--ink)}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6}
+    a{color:var(--dusty-blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1024px,92vw);margin:0 auto}
+    /* Nav */
+    .nav{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter: blur(8px);
+      background:color-mix(in oklab, white 70%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--charcoal) 10%, transparent);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.3px;color:var(--charcoal)}
+    .menu{display:flex;flex-wrap:wrap;gap:14px}
+    .menu a{padding:8px 12px;border-radius:10px}
+    .menu a:hover{background:var(--champagne)}
+    /* Hero */
+    .hero{
+      position:relative;overflow:hidden;border-radius:24px;margin:24px 0 12px;background:linear-gradient(135deg, var(--champagne), #ffffff);
+      min-height:52vh;display:grid;place-items:center;padding:48px 24px;
+      box-shadow:0 10px 40px rgba(0,0,0,.05);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;width:100%}
+    .hero-copy{padding:12px 8px}
+    .kicker{color:var(--dusty-blue);font-weight:600;letter-spacing:.3px;text-transform:uppercase;font-size:.9rem}
+    .title{font-family:"Playfair Display",serif;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin:10px 0;color:var(--charcoal)}
+    .subtitle{max-width:36ch;color:#444}
+    .hero-card{
+      background:white;border-radius:20px;overflow:hidden;border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+    .hero-img{
+      aspect-ratio:3/2;width:100%;object-fit:cover;background:
+        radial-gradient(70% 80% at 20% 10%, rgba(142,169,143,.25) 0 40%, transparent 41%),
+        linear-gradient(180deg, rgba(239,231,220,.55), rgba(239,231,220,.0));
+      display:block;
+    }
+    .hero-note{padding:14px 16px;border-top:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);font-size:.95rem}
+    /* Sections */
+    section{scroll-margin-top:90px; margin:28px 0; padding:24px; background:white; border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent); border-radius:20px}
+    section h2{font-family:"Playfair Display",serif;color:var(--charcoal);font-size:clamp(1.35rem,3vw,1.9rem);margin:0 0 8px}
+    .lead{color:#444;margin:0 0 14px}
+    .card{background:var(--ivory);border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);border-radius:var(--radius);padding:16px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:720px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)} }
+    .pill{display:inline-flex;gap:6px;align-items:center;background:var(--champagne);color:#2c2c2c;padding:6px 10px;border-radius:999px;font-size:.9rem}
+    .tag{display:inline-block;background:color-mix(in oklab, var(--sage) 20%, white);border:1px solid color-mix(in oklab, var(--sage) 35%, white);color:#27402A;padding:4px 10px;border-radius:999px;font-size:.85rem}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:600;border:1px solid color-mix(in oklab, var(--dusty-blue) 30%, white);
+      background:linear-gradient(180deg, white, color-mix(in oklab, white 70%, var(--champagne)));
+      color:var(--dusty-blue);
+      box-shadow:0 6px 20px rgba(111,137,166,.15)
+    }
+    .btn:hover{filter:brightness(1.02);transform:translateY(-1px)}
+    /* Gifts QR placeholder */
+    .qr{
+      display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;
+      padding:16px;border-radius:16px;background:var(--ivory);border:1px dashed color-mix(in oklab, var(--charcoal) 18%, transparent)
+    }
+    .qr-box{
+      width:124px;height:124px;border-radius:12px;background:
+        repeating-linear-gradient(45deg, #e5e5e5 0 8px, #d5d5d5 8px 16px);
+      display:grid;place-items:center;color:#666;font-size:.8rem
+    }
+    /* Footer */
+    footer{padding:28px 0 60px;color:#4a4a4a}
+    .divider{height:1px;background:linear-gradient(90deg, transparent, color-mix(in oklab, var(--charcoal) 16%, transparent), transparent);margin:24px 0}
+    /* Accessibility helpers */
+    .sr-only{position:absolute;left:-9999px}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Wedding Celebration</div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#when-where">When & Where</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#food-parking">Food & Parking</a>
+        <a href="#dress-code">Dress Code</a>
+        <a href="#gifts">Gifts</a>
+        <a href="#questions">Questions</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">You’re invited</div>
+          <h1 class="title">Join us for an evening of love & laughter</h1>
+          <p class="subtitle">We’re so excited to celebrate together at the beautiful French Farmhouse Venue & Inn. Come ready for good food, warm company, and joyful memories.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <span class="pill" title="Event time">🕕 October 3 · 6:00–9:00 PM</span>
+            <a class="btn" href="#when-where">Get the details →</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <!-- Replace this with a real photo of you / the venue; keep 3:2 aspect ratio -->
+          <img class="hero-img" src="" alt="" />
+          <div class="hero-note">
+            Tip: add your favorite photo here (3:2). A warm, natural image pairs beautifully with this palette.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- When & Where -->
+    <section id="when-where">
+      <h2>When & Where</h2>
+      <p class="lead">We’ll gather for an intimate celebration at a stunning North Texas venue.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <strong>Date & Time</strong><br/>
+          <div>📅 <span aria-label="Date">October 3</span></div>
+          <div>🕕 6:00 PM – 9:00 PM</div>
+        </div>
+        <div class="card">
+          <strong>Location</strong><br/>
+          <div>📍 <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse Venue &amp; Inn</a></div>
+          <div class="tag" style="margin-top:8px">On-site parking planned</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule (concise) -->
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <p class="lead">A relaxed, joy-filled evening. Doors open at 6:00 PM; we wrap up by 9:00 PM.</p>
+      <div class="grid grid-3">
+        <div class="card"><strong>6:00 PM</strong><br/>Arrival & hellos</div>
+        <div class="card"><strong>Evening</strong><br/>Dinner & mingling</div>
+        <div class="card"><strong>9:00 PM</strong><br/>Farewell & send-off</div>
+      </div>
+    </section>
+
+    <!-- Food & Parking -->
+    <section id="food-parking">
+      <h2>Food & Parking</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <strong>Food & Drinks</strong>
+          <p>We’ll be serving dinner with a selection of beverages. Vegetarian options will be available. If you have allergies or dietary needs, please let us know in the Questions section below.</p>
+        </div>
+        <div class="card">
+          <strong>Parking</strong>
+          <p>On-site parking is planned at the venue. Please follow event signage and staff guidance upon arrival. A guest drop‑off area will be available near the main entrance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dress Code -->
+    <section id="dress-code">
+      <h2>Dress Code</h2>
+      <p class="lead">Smart Casual — polished yet comfortable.</p>
+      <div class="grid grid-3">
+        <div class="card">✅ Dresses, skirts, jumpsuits, slacks, button‑downs, dressy tops, loafers, dressy sandals</div>
+        <div class="card">🙂 Light jackets or shawls welcome</div>
+        <div class="card">🚫 Kindly avoid athletic sneakers, flip‑flops, or distressed casual wear</div>
+      </div>
+    </section>
+
+    <!-- Gifts / QR -->
+    <section id="gifts">
+      <h2>Gifts</h2>
+      <p class="lead">Your presence is the greatest gift. If you’d like to bless us further, you can use the QR code below for our registry / gift fund.</p>
+      <div class="qr" role="group" aria-label="Gift QR">
+        <div class="qr-box" aria-hidden="true">QR</div>
+        <div>
+          <strong>How it works</strong>
+          <p>Open your camera, scan the QR, and you’ll be taken to our registry page.</p>
+          <!-- Replace href with your registry link; also swap the placeholder above with the actual QR image -->
+          <a class="btn" href="#" aria-label="Open registry link">Open Registry</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section id="questions">
+      <h2>Questions?</h2>
+      <p class="lead">We’re here to help with directions, dietary notes, or anything else.</p>
+      <div class="grid grid-2">
+        <form class="card" onsubmit="event.preventDefault(); alert('Thanks! We received your message.');">
+          <label for="name"><strong>Your Name</strong></label><br/>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" style="width:100%;margin:6px 0 10px;padding:10px;border-radius:10px;border:1px solid #d5d5d5" />
+          <label for="msg"><strong>Message</strong></label><br/>
+          <textarea id="msg" name="msg" rows="4" placeholder="Ask us anything…" style="width:100%;margin:6px 0 12px;padding:10px;border-radius:10px;border:1px solid #d5d5d5"></textarea>
+          <button class="btn" type="submit">Send Message</button>
+          <p style="font-size:.9rem;color:#555;margin-top:10px">Prefer email? Write us at <a href="mailto:hello@example.com">hello@example.com</a></p>
+        </form>
+        <div class="card">
+          <strong>Quick Info</strong>
+          <ul style="margin:8px 0 0 18px">
+            <li>Venue: <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse</a></li>
+            <li>Event: October 3, 6:00–9:00 PM</li>
+            <li>On-site parking planned</li>
+          </ul>
+          <div class="divider"></div>
+          <strong>Contact</strong>
+          <p style="margin:8px 0">Phone: <a href="tel:+10000000000">+1 (000) 000‑0000</a><br/>Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div class="divider"></div>
+      <p>With love and thanks — we can’t wait to celebrate together. 💛</p>
+    </footer>
+  </main>
+</body>
+</html>
