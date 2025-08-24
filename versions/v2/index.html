@@ -19,24 +19,24 @@
     .container{width:min(1024px,92vw);margin:0 auto}
     /* Nav */
     .nav{position:sticky;top:0;z-index:10;backdrop-filter: blur(8px);
-      background:color-mix(in oklab, white 70%, transparent);
+      background:#2b512b;
       border-bottom:1px solid color-mix(in oklab, var(--charcoal) 10%, transparent)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{font-family:"Libre Baskerville",serif;font-weight:700;color:var(--charcoal)}
+    .brand{font-family:"Libre Baskerville",serif;font-weight:700;color: #fff; font-size: 20px;}
     .menu{display:flex;flex-wrap:wrap;gap:14px}
-    .menu a{padding:8px 12px;border-radius:10px}
+    .menu a{padding:8px 12px;border-radius:10px; color: white;}
     @media (max-width: 768px) {
       .menu {width: 70%;}
       .menu a {padding: 0; border: none;}
     }
-    .menu a:hover{background:var(--champagne)}
+    .menu a:hover{background:var(--champagne); color: #2b512b; text-decoration: none;}
     /* Hero */
     .hero{border-radius:24px;margin:24px 0 12px; background:linear-gradient(135deg, var(--champagne), #ffffff);
       min-height:52vh;display:grid;place-items:center;padding:48px 24px; box-shadow:0 10px 40px rgba(0,0,0,.05)}
     .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;width:100%}
     @media(max-width:800px){.hero-grid{grid-template-columns:1fr}}
-    .kicker{color:var(--dusty-blue);font-weight:600;letter-spacing:.3px;text-transform:uppercase;font-size:.9rem}
-    .title{font-family:"Libre Baskerville",serif;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin:10px 0;color:var(--charcoal)}
+    .kicker{color:#407540;font-weight:600;letter-spacing:.3px;text-transform:uppercase;font-size:.9rem}
+    .title{font-family:"Libre Baskerville",serif;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin:10px 0;color:#2b512b}
     .subtitle{max-width:38ch;color:#444}
     .hero-card{background:white;border-radius:20px;overflow:hidden;border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);
       box-shadow:0 10px 30px rgba(0,0,0,.06)}
@@ -56,11 +56,18 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:600;border:1px solid color-mix(in oklab, var(--dusty-blue) 30%, white);
       background:linear-gradient(180deg, white, color-mix(in oklab, white 70%, var(--champagne))); color:var(--dusty-blue); box-shadow:0 6px 20px rgba(111,137,166,.15)}
     .btn:hover{filter:brightness(1.02);transform:translateY(-1px)}
-    .qr{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:16px;border-radius:16px;background:var(--ivory);border:1px dashed color-mix(in oklab, var(--charcoal) 18%, transparent)}
+    .qr{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:16px;border-radius:16px;}
+    /* old QR background - background:var(--ivory);border:1px dashed color-mix(in oklab, var(--charcoal) 18%, transparent) */
     .qr-box{width:124px;height:124px;border-radius:12px;background:
       repeating-linear-gradient(45deg, #e5e5e5 0 8px, #d5d5d5 8px 16px); display:grid;place-items:center;color:#666;font-size:.8rem}
     details{background:var(--ivory);border-radius:12px;border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);padding:12px}
     details+details{margin-top:10px}
+
+    #gifts .qr img { width: 144px; }
+    @media (max-width: 768px) {
+      #gifts .qr { display: flex; justify-content: center; }
+      #gifts .qr img { width: 80%; }
+    }
     summary{cursor:pointer;font-weight:600}
     .divider{height:1px;background:linear-gradient(90deg, transparent, color-mix(in oklab, var(--charcoal) 16%, transparent), transparent);margin:24px 0}
     footer{padding:28px 0 60px;color:#4a4a4a}
@@ -117,15 +124,16 @@
           <!-- Choose ONE of the blocks below and delete the other -->
           <div style="margin-top:6px">
             <!-- <em>As linked:</em><br/> -->
-            📍 <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse (Texas)</a><br/>
+             <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse</a><br/>
           </div>
-          <div class="divider"></div>
+          📍 The French Farmhouse, 9 Church Avenue SE, Roanoke, VA, United States, Virginia<br/>
+           <!-- <div class="divider"></div>
           <div>
-            <!-- <em>As written in your note:</em><br/> -->
-            📍 The French Farmhouse, 9 Church Avenue SE, Roanoke, VA, United States, Virginia<br/>
+             <em>As written in your note:</em><br/> -->
+            
             <!-- ☎ <span title="This looks one digit short">+1 540-595-932</span><br/> -->
-            <!-- <span class="tag">Please verify address & phone</span> -->
-          </div>
+            <!-- <span class="tag">Please verify address & phone</span> 
+          </div>-->
         </div>
       </div>
       <!-- <p class="lead" style="margin-top:12px">
@@ -136,11 +144,11 @@
     <!-- Schedule -->
     <section id="schedule">
       <h2>Schedule</h2>
-      <p class="lead">A heartfelt ceremony to start, then cocktails, dinner, and dancing.</p>
+      <p class="lead">A heartfelt ceremony to start, then cocktails, dinner, and drinks.</p>
       <div class="grid grid-3">
         <div class="card"><strong>5:30 PM</strong><br/>Recommended arrival (parking & seating)</div>
         <div class="card"><strong>6:00 PM</strong><br/>Ceremony begins</div>
-        <div class="card"><strong>6:30–8:30 PM</strong><br/>Cocktails, buffet dinner, mingling & dancing</div>
+        <div class="card"><strong>6:30–8:30 PM</strong><br/>Cocktails, dinner, and some fun</div>
       </div>
     </section>
 
@@ -165,21 +173,25 @@
     <section id="dress-code">
       <h2>Dress Code</h2>
       <p class="lead">Cocktail Attire — elegant yet comfortable.</p>
-      <div class="grid grid-3">
+      <ul>
+        <li>✅ Dresses, suits, or dressy separates; heels, loafers, or dressy flats</li>
+        <li>🚫 Kindly skip athletic sneakers, flip‑flops, and casual wear</li>
+      </ul>
+      <!-- <div class="grid grid-3">
         <div class="card">✅ Dresses, suits, or dressy separates; heels, loafers, or dressy flats</div>
-        <div class="card">🙂 Light layers welcome (evenings can be breezy)</div>
         <div class="card">🚫 Kindly skip athletic sneakers, flip‑flops, and casual wear</div>
-      </div>
+      </div> -->
     </section>
 
+    
     <!-- Gifts / QR -->
     <section id="gifts">
       <h2>Gifts</h2>
-      <p class="lead">Your presence is the greatest gift. If you’d like to contribute to our future digitally, scan the QR below to find our Venmo and Zil details.</p>
+      <p class="lead">Your presence is the greatest gift. If you’d like to contribute to our future digitally, scan the QR below to find our Zelle details.</p>
       <div class="qr" role="group" aria-label="Gift QR">
         <!-- Swap this box for your QR image: <img src="qr.png" alt="Registry QR" width="124" height="124"> -->
-        <div class="qr-box" aria-hidden="true">QR</div>
-        <div class="qr-box" aria-hidden="true">QR</div>
+        <img src="../../assets/jas-qr.jpeg" alt="Gift QR" width="100%" >
+        <!-- <div class="qr-box" aria-hidden="true">QR</div> -->
         <!-- <div>
           <strong>How it works</strong>
           <p>Open your camera, scan the code, and you’ll be taken to our registry page.</p>
@@ -197,7 +209,7 @@
       </details>
       <details>
         <summary>Is the venue outdoors or indoors?</summary>
-        <div style="margin-top:8px">The venue offers both. Ceremonies may be held indoors (e.g., chapel) or outdoors, with seating arranged accordingly.</div>
+        <div style="margin-top:8px">The venue is indoor. </div>
       </details>
       <details>
         <summary>Any accommodation suggestions?</summary>
@@ -234,8 +246,7 @@
           <strong>Quick Info</strong>
           <ul style="margin:8px 0 0 0">
             <li>Event: Thu, Oct 3, 2025 · 5:30–8:30 PM</li>
-            <li>Venue link: <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse</a> (VA)</li>
-            <li>9 Church Ave SE, Roanoke, VA</li>
+            <li>Venue link: <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse</a> (VA), 9 Church Ave SE, Roanoke, VA</li>
           </ul>
           <div class="divider"></div>
           <strong>Contact</strong>
