@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>You’re Invited — Rocky & Jas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#FAF9F7; --champagne:#EFE7DC; --sage:#8EA98F; --dusty-blue:#5c9b73; --charcoal:#2F2F2F; --ink:#1F1F1F;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--ivory);color:var(--ink)}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6}
+    a{color:var(--dusty-blue);text-decoration:none} a:hover{text-decoration:underline}
+    .container{width:min(1024px,92vw);margin:0 auto}
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:10;backdrop-filter: blur(8px);
+      background:#4e7965;
+      border-bottom:1px solid color-mix(in oklab, var(--charcoal) 10%, transparent)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{font-family:"Libre Baskerville",serif;font-weight:700;color: #fff; font-size: 20px;}
+    .menu{display:flex;flex-wrap:wrap;gap:14px}
+    .menu a{padding:8px 12px;border-radius:10px; color: white;}
+    @media (max-width: 768px) {
+      .menu {width: 70%;}
+      .menu a {padding: 0; border: none;}
+    }
+    .menu a:hover{background:var(--champagne); color: #4e7965; text-decoration: none;}
+    /* Hero */
+    .hero{border-radius:24px;margin:24px 0 12px; background:linear-gradient(135deg, var(--champagne), #ffffff);
+      min-height:52vh;display:grid;place-items:center;padding:48px 24px; box-shadow:0 10px 40px rgba(0,0,0,.05)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;width:100%}
+    @media(max-width:800px){.hero-grid{grid-template-columns:1fr}}
+    .kicker{color:#407540;font-weight:600;letter-spacing:.3px;text-transform:uppercase;font-size:.9rem}
+    .title{font-family:"Libre Baskerville",serif;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin:10px 0;color:#3e6251}
+    .subtitle{max-width:38ch;color:#444}
+    .hero-card{background:white;border-radius:20px;overflow:hidden;border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);
+      box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    .hero-img{aspect-ratio:3/2;width:100%;height:100%;object-fit:cover;background:
+      radial-gradient(70% 80% at 20% 10%, rgba(142,169,143,.25) 0 40%, transparent 41%),
+      linear-gradient(180deg, rgba(239,231,220,.55), rgba(239,231,220,.0))}
+    .hero-note{padding:14px 16px;border-top:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);font-size:.95rem}
+    /* Sections */
+    section{scroll-margin-top:90px; margin:28px 0; padding:24px; background:white; border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent); border-radius:20px}
+    section h2{font-family:"Libre Baskerville",serif;color:#4e7965;font-size:clamp(1.35rem,3vw,1.9rem);margin:0 0 8px}
+    .lead{color:#444;margin:0 0 14px}
+    .card{background:var(--ivory);border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);border-radius:var(--radius);padding:16px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:720px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)} }
+    .pill{display:inline-flex;gap:6px;align-items:center;background:var(--sage);color:var(--ivory);;padding:6px 10px;border-radius:999px;font-size:.9rem}
+    .tag{display:inline-block;background:color-mix(in oklab, var(--sage) 20%, white);border:1px solid color-mix(in oklab, var(--sage) 35%, white);color:#27402A;padding:4px 10px;border-radius:999px;font-size:.85rem}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:600;border:1px solid color-mix(in oklab, var(--dusty-blue) 30%, white);
+      background:linear-gradient(180deg, white, color-mix(in oklab, white 70%, var(--champagne))); color:var(--dusty-blue); box-shadow:0 6px 20px rgba(111,137,166,.15)}
+    .btn:hover{filter:brightness(1.02);transform:translateY(-1px)}
+    .qr{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:16px;border-radius:16px;}
+    /* old QR background - background:var(--ivory);border:1px dashed color-mix(in oklab, var(--charcoal) 18%, transparent) */
+    .qr-box{width:124px;height:124px;border-radius:12px;background:
+      repeating-linear-gradient(45deg, #e5e5e5 0 8px, #d5d5d5 8px 16px); display:grid;place-items:center;color:#666;font-size:.8rem}
+    details{background:var(--ivory);border-radius:12px;border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);padding:12px}
+    details+details{margin-top:10px}
+
+    #gifts .qr img { width: 144px; }
+    @media (max-width: 768px) {
+      #gifts .qr { display: flex; justify-content: center; }
+      #gifts .qr img { width: 80%; }
+    }
+    summary{cursor:pointer;font-weight:600}
+    .divider{height:1px;background:linear-gradient(90deg, transparent, color-mix(in oklab, var(--charcoal) 16%, transparent), transparent);margin:24px 0}
+    footer{padding:28px 0 60px;color:#4a4a4a}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Rocky & Jas</div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#when-where">When & Where</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#food-parking">Food & Parking</a>
+        <a href="#dress-code">Dress Code</a>
+        <a href="#gifts">Gifts</a>
+        <a href="#questions">Questions</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Hello, dear friends & family!</div>
+          <h1 class="title">We’re thrilled to celebrate our wedding day with you</h1>
+          <p class="subtitle">Here’s a quick guide to make your evening as joyful as ours—complete with schedule, food & drinks, parking, dress code, and more.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <span class="pill">📅 Thu, Oct 3, 2025</span>
+            <span class="pill">🕕 5:30–8:30 PM</span>
+            <!-- <a class="btn" href="#when-where">Get the details →</a> -->
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <!-- Replace this with a real photo (3:2) -->
+          <img class="hero-img" src="assets/rocky-jas.jpeg" alt="">
+          <!-- <div class="hero-note">Our first pic together!</div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- When & Where -->
+    <section id="when-where">
+      <h2>When & Where</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <strong>Date & Time</strong><br/>
+          📅 Thursday, October 3, 2025<br/>
+          🕕 5:30 PM – 8:30 PM
+        </div>
+        <div class="card">
+          <strong>Venue</strong><br/>
+          <!-- Choose ONE of the blocks below and delete the other -->
+          <div style="margin-top:6px">
+            <!-- <em>As linked:</em><br/> -->
+             <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse</a><br/>
+          </div>
+          📍 The French Farmhouse, 9 Church Avenue SE, Roanoke, VA, United States, Virginia<br/>
+           <!-- <div class="divider"></div>
+          <div>
+             <em>As written in your note:</em><br/> -->
+            
+            <!-- ☎ <span title="This looks one digit short">+1 540-595-932</span><br/> -->
+            <!-- <span class="tag">Please verify address & phone</span> 
+          </div>-->
+        </div>
+      </div>
+      <!-- <p class="lead" style="margin-top:12px">
+        Complimentary, ample on-site parking. Follow event signage to the designated guest parking near the entrance. Carpooling is encouraged to keep things smooth.
+      </p> -->
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <p class="lead">A heartfelt ceremony to start, then cocktails, dinner, and drinks.</p>
+      <div class="grid grid-3">
+        <div class="card"><strong>5:30 PM</strong><br/>Recommended arrival (parking & seating)</div>
+        <div class="card"><strong>6:00 PM</strong><br/>Ceremony begins</div>
+        <div class="card"><strong>6:30–8:30 PM</strong><br/>Cocktails, dinner, and some fun</div>
+      </div>
+    </section>
+
+    <!-- Food & Parking -->
+    <!-- <section id="food-parking">
+      <h2>Food & Drinks</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <strong>Dinner & Beverages</strong>
+          <p>We’ll be serving a delicious buffet-style dinner with options for all appetites—including vegetarian and allergy‑friendly selections. Expect tasty starters, hearty mains, fresh sides, and a sweet dessert to cap it all off.</p>
+          <p>Signature cocktails and soft drinks will be available throughout the evening. <em>If you have dietary needs, please let us know below.</em></p>
+        </div>
+        <div class="card">
+          <strong>Parking</strong>
+          <p>Complimentary, on‑site parking is available. Follow signs to the guest lot near the entrance. A drop‑off area will be available for easier access. Carpooling is encouraged.</p>
+        </div>
+        Paid parking across the street
+      </div>
+    </section> -->
+
+    <!-- Dress Code -->
+    <section id="dress-code">
+      <h2>Dress Code</h2>
+      <p class="lead">Cocktail Attire — elegant yet comfortable.</p>
+      <ul>
+        <li>✅ Dresses, suits, or dressy separates; heels, loafers, or dressy flats</li>
+        <li>🚫 Kindly skip athletic sneakers, flip‑flops, and casual wear</li>
+      </ul>
+      <!-- <div class="grid grid-3">
+        <div class="card">✅ Dresses, suits, or dressy separates; heels, loafers, or dressy flats</div>
+        <div class="card">🚫 Kindly skip athletic sneakers, flip‑flops, and casual wear</div>
+      </div> -->
+    </section>
+
+    
+    <!-- Gifts / QR -->
+    <section id="gifts">
+      <h2>Gifts</h2>
+      <p class="lead">Your presence is the greatest gift. If you’d like to contribute to our future digitally, scan the QR below to find our Zelle details.</p>
+      <div class="qr" role="group" aria-label="Gift QR">
+        <!-- Swap this box for your QR image: <img src="qr.png" alt="Registry QR" width="124" height="124"> -->
+        <img src="assets/jas-qr.jpeg" alt="Gift QR" width="100%" >
+        <!-- <div class="qr-box" aria-hidden="true">QR</div> -->
+        <!-- <div>
+          <strong>How it works</strong>
+          <p>Open your camera, scan the code, and you’ll be taken to our registry page.</p>
+          <!-- <a class="btn" href="#" aria-label="Open registry link">Open Registry</a> -->
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="questions">
+      <h2> Questions? We’ve Got You!</h2>
+      <details>
+        <summary>What time should I arrive?</summary>
+        <div style="margin-top:8px">We recommend arriving around <strong>5:30 PM</strong>—that gives you plenty of time to park, say hello, and find your seat before the ceremony.</div>
+      </details>
+      <details>
+        <summary>Is the venue outdoors or indoors?</summary>
+        <div style="margin-top:8px">The venue is indoors. </div>
+      </details>
+      <details>
+        <summary>Any accommodation suggestions?</summary>
+        <div style="margin-top:8px">
+          Nearby options are: <br/>
+          <ul>
+            <li>Hotel Roanoke & Conference Center (a historic, upscale hotel just a 5-minute walk away)</li>
+            <li>Hampton Inn & Suites Roanoke-Downtown (modern and convenient, only a 3-minute walk)</li>
+            <li>The Liberty Trust (a stylish boutique hotel right across the street)</li>
+            <li>King George Inn (a charming B&B about a 5-minute drive from The French Farmhouse)</li>
+          </ul>
+        </div>
+      </details>
+      <!-- <details>
+        <summary>Can I bring a plus‑one or children?</summary>
+        <div style="margin-top:8px">Of course! Just include details in your RSVP so we can ensure there’s a seat (and plate!) waiting.</div>
+      </details> -->
+    </section>
+
+    <!-- Questions / Contact -->
+    <section id="questions">
+      <h2>Contact Us</h2>
+      <p class="lead">We’re here to help with directions, dietary notes, or anything else.</p>
+      <div class="grid grid-1">
+        <!-- <form class="card" onsubmit="event.preventDefault(); alert('Thanks! We received your message.');">
+          <label for="name"><strong>Your Name</strong></label><br/>
+          <input id="name" name="name" type="text" placeholder="" style="width:100%;margin:6px 0 10px;padding:10px;border-radius:10px;border:1px solid #d5d5d5" />
+          <label for="msg"><strong>Message</strong></label><br/>
+          <textarea id="msg" name="msg" rows="4" placeholder="Ask us anything…" style="width:100%;margin:6px 0 12px;padding:10px;border-radius:10px;border:1px solid #d5d5d5"></textarea>
+          <button class="btn" type="submit">Send Message</button>
+          <p style="font-size:.9rem;color:#555;margin-top:10px">Prefer email? Write us at <a href="mailto:hello@example.com">hello@example.com</a></p>
+        </form> -->
+        <div class="card">
+          <strong>Quick Info</strong>
+          <ul style="margin:8px 0 0 0">
+            <li>Event: Fri, Oct 3, 2025 · 5:30–8:30 PM</li>
+            <li>Venue link: <a href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">The French Farmhouse</a> (VA), 9 Church Ave SE, Roanoke, VA</li>
+          </ul>
+          <div class="divider"></div>
+          <strong>Contact</strong>
+          <p style="margin:8px 0">Phone: <a href="tel:+13476915412" title="Check final digits">+1 347‑691‑5412</a><br/>Email: <a href="mailto:go.jasmin22@gmail.com">go.jasmin22@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div class="divider"></div>
+      <p>With love and thanks — we can’t wait to celebrate together. 💛</p>
+    </footer>
+  </main>
+</body>
+</html><!DOCTYPE html>
+<!-- <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Wedding — October 3, 2025</title>
+  <meta name="description" content="Wedding invite & guest FAQ for our celebration at The French Farmhouse, Roanoke, VA — October 3, 2025, 6–9 PM." />
+  <style>
+    :root {
+      --bg: #faf7f3;
+      --card: #ffffff;
+      --ink: #2b2b2b;
+      --muted: #6b6b6b;
+      --accent: #9c6b4a; /* warm bronze */
+      --accent-2: #ccb89b;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink); background: var(--bg); line-height: 1.5;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(180deg, #fff5ea, #faf7f3);
+      padding: 56px 20px 36px; text-align: center; position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(120%) blur(8px);
+      border-bottom: 1px solid #efd9c9;
+    }
+    @media (max-width: 768px) {
+      header { padding: 20px 10px; }
+    }
+    .title { font-size: clamp(28px, 5vw, 44px); margin: 0 0 8px; letter-spacing: 0.5px; }
+    .subtitle { margin: 0; color: var(--muted); font-size: clamp(14px, 2.8vw, 18px); }
+    nav { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    nav a { text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid #eadfd2; padding: 8px 12px; border-radius: 999px; font-size: 14px; }
+
+    section { padding: 28px 20px; }
+    .card {
+      background: var(--card); border: 1px solid #eee3d7; border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 22px; margin: 14px 0;
+    }
+    h2 { font-size: clamp(20px, 3.6vw, 26px); margin: 0 0 14px; }
+    p { margin: 10px 0; }
+    .muted { color: var(--muted); }
+
+    .kvs { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .kv { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; }
+    .kv strong { display: block; font-weight: 700; }
+
+    @media (min-width: 680px) {
+      .kvs { grid-template-columns: 1fr 1fr; }
+    }
+
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .badge { background: #f6efe7; color: #573e2a; border: 1px solid #eadfd2; padding: 6px 10px; border-radius: 999px; font-size: 13px; }
+
+    .schedule { display: grid; gap: 10px; }
+    .slot { display: grid; grid-template-columns: 92px 1fr; gap: 16px; align-items: center; }
+    .time { font-weight: 700; color: var(--accent); }
+
+    .qr {
+      width: 180px; height: 180px; border: 2px dashed #d8c9b6; border-radius: 12px; display: grid; place-items: center; margin: 12px 0;
+      color: var(--muted); font-size: 14px; background: #fffdf9;
+    }
+
+    details { border: 1px solid #eee3d7; border-radius: 12px; padding: 14px 16px; background: #fffefb; }
+    details + details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 600; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .btn { appearance: none; border: 1px solid #eadfd2; background: var(--card); border-radius: 12px; padding: 10px 14px; font-size: 14px; cursor: pointer; text-decoration: none; color: var(--ink); }
+    .btn.primary { background: var(--accent); color: white; border: none; }
+
+    footer { text-align: center; color: var(--muted); padding: 28px 10px 56px; }
+
+    .icon { width: 24px; height: 24px; color: var(--accent); }
+    .inline-icon { width: 18px; height: 18px; vertical-align: -3px; }
+    a { color: #734f34; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1 class="title">Our Wedding — October 3, 2025</h1>
+      <p class="subtitle">A cozy evening of love & laughter • 6:00 PM – 9:00 PM</p>
+      <nav aria-label="Section links">
+        <a href="#when-where">When & Where</a>
+        <a href="#food">Food & Drinks</a>
+        <a href="#dress">Dress Code</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#gifts">Gifts</a>
+        <a href="#faq">Questions</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+    <section class="card" id="intro" aria-labelledby="intro-title">
+      <h2 id="intro-title">Hello, dear friends and family!</h2>
+      <p>We’re so excited to celebrate our wedding day with you. This quick guide has everything you need to enjoy the evening and find your way around with ease.</p>
+    </section>
+
+    <section class="card" id="when-where" aria-labelledby="ww-title">
+      <h2 id="ww-title">📍 When & Where</h2>
+      <div class="kvs">
+        <div class="kv">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <strong>Date & Time</strong>
+            <div>Thursday, <b>October 3, 2025</b> • <b>6:00 PM – 9:00 PM</b></div>
+          </div>
+        </div>
+        <div class="kv">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          <div>
+            <strong>Venue</strong>
+            <div>The French Farmhouse<br>9 Church Avenue SE, Roanoke, VA, United States</div>
+            <div class="muted">Phone: +1 540-595-932</div>
+            <div class="cta-row">
+              <a class="btn" href="https://www.thefrench-farmhouse.com/" target="_blank" rel="noopener">Venue Website</a>
+              <a class="btn" href="https://maps.google.com/?q=9+Church+Avenue+SE%2C+Roanoke%2C+VA" target="_blank" rel="noopener">Open in Maps</a>
+              <a class="btn" href="#parking">Parking Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="food" aria-labelledby="food-title">
+      <h2 id="food-title">🍴 Food & Drinks</h2>
+      <p>We’ll be serving a <strong>delicious buffet-style dinner</strong> with something for everyone—including <strong>vegetarian</strong> and <strong>allergy-friendly</strong> options. Expect tasty starters, hearty mains, fresh sides, and a sweet dessert to finish.</p>
+      <p>Beverages will be available all evening, including <strong>signature cocktails</strong> and a variety of non‑alcoholic choices.</p>
+    </section>
+
+    <section class="card" id="dress" aria-labelledby="dress-title">
+      <h2 id="dress-title">👗 Dress Code</h2>
+      <p>We’re going for <strong>Cocktail Attire</strong>—elegant yet comfortable. Think dresses, suits, or dressy separates. Please <strong>skip sneakers or flip‑flops</strong> to keep the look polished.</p>
+      <div class="badges" aria-hidden="true">
+        <span class="badge">Dressy separates</span>
+        <span class="badge">Loafers / heels</span>
+        <span class="badge">No sneakers</span>
+        <span class="badge">No flip‑flops</span>
+      </div>
+    </section>
+
+    <section class="card" id="schedule" aria-labelledby="schedule-title">
+      <h2 id="schedule-title">🕕 Schedule</h2>
+      <div class="schedule">
+        <div class="slot"><div class="time">6:00 PM</div><div>Ceremony</div></div>
+        <div class="slot"><div class="time">6:30 PM</div><div>Cocktails & mingling</div></div>
+        <div class="slot"><div class="time">7:00 PM</div><div>Dinner</div></div>
+        <div class="slot"><div class="time">8:00 PM</div><div>Dancing & celebration</div></div>
+        <div class="slot"><div class="time">9:00 PM</div><div>Farewell send‑off</div></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#faq">See FAQs</a>
+      </div>
+    </section>
+
+    <section class="card" id="parking" aria-labelledby="parking-title">
+      <h2 id="parking-title">🅿️ Parking & Arrival</h2>
+      <p><strong>Complimentary on‑site parking</strong> is available. Follow venue signage to the designated guest area near the entrance. <strong>Carpooling</strong> is encouraged to make arrival even smoother.</p>
+      <p class="muted">Tip: Aim to arrive by <strong>5:45 PM</strong> to park, say hello, and find your seat before the ceremony begins.</p>
+    </section>
+
+    <section class="card" id="gifts" aria-labelledby="gifts-title">
+      <h2 id="gifts-title">🎁 Gifts</h2>
+      <p>Your presence is the greatest gift. If you’d like to contribute to our future, we’ve set up a registry and fund. Scan the QR code below to explore options:</p>
+      <div class="qr" role="img" aria-label="QR code placeholder">QR Code<br/>Goes Here</div>
+      <div class="cta-row">
+        <a class="btn primary" href="#" aria-disabled="true">Registry Link (optional)</a>
+        <a class="btn" href="#faq">Gift FAQs</a>
+      </div>
+    </section>
+
+    <section class="card" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">❓ Questions? We’ve Got You!</h2>
+
+      <details>
+        <summary>What time should I arrive?</summary>
+        <p>Please plan to arrive around <strong>5:45 PM</strong> to allow time for parking and getting settled before the ceremony begins at 6:00 PM.</p>
+      </details>
+
+      <details>
+        <summary>Is the venue indoors or outdoors?</summary>
+        <p>The French Farmhouse offers both indoor and outdoor spaces. Our celebration is planned for <strong>indoors</strong> so we’re cozy and comfortable regardless of weather.</p>
+      </details>
+
+      <details>
+        <summary>Any accommodation suggestions?</summary>
+        <p>There are several great hotels within a short drive. If you’d like recommendations, reach out and we’ll share nearby options.</p>
+      </details>
+
+      <details>
+        <summary>Can I bring a plus‑one or children?</summary>
+        <p>Yes—please include your plus‑one(s) or children in your RSVP so we can save seats and plates.</p>
+      </details>
+
+      <details>
+        <summary>Who can I contact with other questions?</summary>
+        <p>Message us directly and we’ll be happy to help with directions, dietary requests, or anything else you need.</p>
+      </details>
+    </section>
+
+    <footer>
+      <p>Thank you for being part of our story. We can’t wait to celebrate with you! 🥂</p>
+      <p><a href="#top" class="btn">Back to top ↑</a></p>
+    </footer>
+  </main>
+</body>
+</html> -->
