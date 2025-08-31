@@ -6,7 +6,9 @@
   <title>You’re Invited — Rocky & Jas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
   <style>
     :root{
       --ivory:#FAF9F7; --champagne:#EFE7DC; --sage:#8EA98F; --dusty-blue:#5c9b73; --charcoal:#2F2F2F; --ink:#1F1F1F;
@@ -14,7 +16,7 @@
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--ivory);color:var(--ink)}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6}
+    body{font-family:Bellefair,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6}
     a{color:var(--dusty-blue);text-decoration:none} a:hover{text-decoration:underline}
     .container{width:min(1024px,92vw);margin:0 auto}
     /* Nav */
@@ -35,7 +37,7 @@
       min-height:52vh;display:grid;place-items:center;padding:48px 24px; box-shadow:0 10px 40px rgba(0,0,0,.05)}
     .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;width:100%}
     @media(max-width:800px){.hero-grid{grid-template-columns:1fr}}
-    .kicker{color:#407540;font-weight:600;letter-spacing:.3px;text-transform:uppercase;font-size:.9rem}
+    .kicker{font-family: Herr Von Muellerhoff; color:#407540;font-weight:400;letter-spacing:1px;font-size:1.4rem}
     .title{font-family:"Libre Baskerville",serif;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin:10px 0;color:#3e6251}
     .subtitle{max-width:38ch;color:#444}
     .hero-card{background:white;border-radius:20px;overflow:hidden;border:1px solid color-mix(in oklab, var(--charcoal) 8%, transparent);
@@ -68,9 +70,13 @@
       #gifts .qr { display: flex; justify-content: center; }
       #gifts .qr img { width: 80%; }
     }
-    summary{cursor:pointer;font-weight:600}
+    summary{cursor:pointer;font-weight:600; font-family: "Libre Baskerville", serif;}
     .divider{height:1px;background:linear-gradient(90deg, transparent, color-mix(in oklab, var(--charcoal) 16%, transparent), transparent);margin:24px 0}
     footer{padding:28px 0 60px;color:#4a4a4a}
+
+    strong {
+      font-family: "Libre Baskerville", serif;
+    }
   </style>
 </head>
 <body>
@@ -93,7 +99,7 @@
     <section class="hero" aria-label="Welcome">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="kicker">Hello, dear friends & family!</div>
+          <div class="kicker">Friends and family!</div>
           <h1 class="title">We’re thrilled to celebrate our wedding day with you</h1>
           <p class="subtitle">Here’s a quick guide to make your evening as joyful as ours—complete with schedule, food & drinks, parking, dress code, and more.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
