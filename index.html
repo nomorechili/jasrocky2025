@@ -25,6 +25,9 @@
       border-bottom:1px solid color-mix(in oklab, var(--charcoal) 10%, transparent)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
     .brand{font-family:"Libre Baskerville",serif;font-weight:700;color: #fff; font-size: 20px;}
+    @media (max-width: 768px) {
+      .brand span { display: block; }
+    }
     .menu{display:flex;flex-wrap:wrap;gap:14px}
     .menu a{padding:8px 12px;border-radius:10px; color: white;}
     @media (max-width: 768px) {
@@ -82,7 +85,7 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand">Rocky & Jas</div>
+      <div class="brand">Rocky <span>& Jas</span></div>
       <nav class="menu" aria-label="Primary">
         <a href="#when-where">When & Where</a>
         <a href="#schedule">Schedule</a>
